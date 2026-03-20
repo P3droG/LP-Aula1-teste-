@@ -33,7 +33,7 @@ int main()
         printf("Brutal, vc esta abaixo do peso\n");
         }
         else if(imc > max){
-            printf("Baleia, vc ta gordo cara\n");
+            printf("Vc ta gordo cara\n");
         }
         else{
             printf("Parabens, vc fez o menimo, esta no peso ideal\n");
