@@ -1,47 +1,57 @@
 #include <stdio.h>
 
-int  main(){
-    float oxigenio, oxigeniomed, soma, menos96=0, freqcardiaca, maior;
-    int mais25=0, menos16=0, idade, cont;
+int main()
+{
+    int qntd, tp, contmrcnr, contlmpz, contprcvs, cont, cont60k;
+    float prc, vlrttl, maior;
+    char nm[50];
 
-    for(int i=1; i<=10; i++)
+    cont60k = 0;
+    maior = 0;
+    contmrcnr = 0;
+    contlmpz = 0;
+    contprcvs = 0;
+
+    for (int i = 1; i <= 34; i++)
     {
-        maior=0;
-        oxigeniomed=0;
-        soma=0;
-        cont=0;
-        scanf("%d", &idade);
-        if(idade>25)
+        cont = 0;
+        vlrttl = 0;
+        scanf("%f", &prc);
+        if (maior < prc)
         {
-            mais25++;
-        }else
-            {
-                if(idade<16)
-                {
-                    menos16++;
-                }
-            }
-        scanf("%f", &oxigenio);
-        while(oxigenio != -1){
-            soma+=oxigenio;
+            maior = prc;
+        }
+        do
+        {
             cont++;
-            scanf("%f", &oxigenio);
-        }
-            for(int j=1; j<=8; j++)
+            scanf(" %s", nm);
+            scanf("%d", &qntd);
+            scanf("%d", &tp);
+            if (tp == 1)
             {
-                scanf("%f", &freqcardiaca);
-                if(maior<freqcardiaca)
+                contmrcnr++;
+            }
+            else
+            {
+                if (tp == 2)
                 {
-                    maior=freqcardiaca;
+                    contlmpz++;
+                }
+                else
+                {
+                    contprcvs++;
                 }
             }
-        oxigeniomed=soma/cont;
-        if(oxigeniomed<96){
-            menos96++;
+            scanf("%f", &prc);
+        } while (prc != -1);
+        if (vlrttl < 60000)
+        {
+            cont60k++;
         }
-        printf("%f", oxigeniomed);
-        printf("%f", maior);
+        printf("%f", vlrttl);
+        printf("%.2f%.2f%.2f", ((float)contmrcnr / cont) * 100, ((float)contlmpz / cont) * 100, ((float)contprcvs / cont) * 100);
     }
-    printf("%d", menos96);
-    printf("%.2f%.2f", ((float)mais25/10)*100, ((float)menos16/10)*100);
+    printf("%f", maior);
+    printf("%d", cont60k);
+    printf("%.2f%.2f%.2f", ((float)contmrcnr / cont) * 100, ((float)contlmpz / cont) * 100, ((float)contprcvs / cont) * 100);
 }
